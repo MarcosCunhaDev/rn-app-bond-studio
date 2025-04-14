@@ -1,15 +1,19 @@
-import {Text, SafeAreaView, StyleSheet} from 'react-native';
+import {Text, SafeAreaView, StyleSheet, ImageBackground} from 'react-native';
 import React from 'react';
 import {NavBar} from '../components/NavBar';
 import {Header} from '../components/Header';
 import {Carousel} from '../components/Carousel';
 
+const backgroundImage = require('../assets/images/background.png');
+
 const Home = () => {
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
-      <Header />
-      <Carousel />
-      <NavBar />
+      <ImageBackground source={backgroundImage} style={styles.background}>
+        <Header />
+        <Carousel />
+        <NavBar />
+      </ImageBackground>
     </SafeAreaView>
   );
 };
@@ -17,20 +21,18 @@ const Home = () => {
 export default Home;
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    flex: 1,
   },
-  sectionTitle: {
+  background: {
+    flex: 1,
+    resizeMode: 'cover', // or 'contain' depending on your needs
+    justifyContent: 'center',
+  },
+  text: {
+    color: 'white',
     fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
 });
