@@ -17,7 +17,11 @@ function App(): React.JSX.Element {
 
   return (
     <View style={{flex: 1}}>
-      <StatusBar barStyle={'dark-content'} backgroundColor={Colors.lighter} />
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="dark-content"
+      />
       <Home />
     </View>
   );
