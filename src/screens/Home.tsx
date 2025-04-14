@@ -26,8 +26,7 @@ const styles = StyleSheet.create({
   },
   background: {
     flex: 1,
-    resizeMode: 'cover', // or 'contain' depending on your needs
-    justifyContent: 'center',
+    resizeMode: 'cover',
   },
   text: {
     color: 'white',
