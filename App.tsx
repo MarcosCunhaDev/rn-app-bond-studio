@@ -1,16 +1,7 @@
 import React from 'react';
-import {
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  useColorScheme,
-  View,
-  Text,
-  SafeAreaView,
-} from 'react-native';
-
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {StatusBar, StyleSheet, useColorScheme, View} from 'react-native';
 import Home from './src/screens/Home';
+import {NavBar} from './src/components/NavBar';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -23,6 +14,7 @@ function App(): React.JSX.Element {
         barStyle="dark-content"
       />
       <Home />
+      <NavBar />
     </View>
   );
 }
