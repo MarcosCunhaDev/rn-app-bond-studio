@@ -23,28 +23,31 @@ export const Header = () => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 58,
-    marginTop: 127,
+    marginTop: 62,
+    marginBottom: 36,
     flexDirection: 'row',
-    borderWidth: 1,
     paddingHorizontal: 24,
   },
-  profileContainer: {},
+  profileContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   profileImg: {
     width: 48,
     height: 48,
     borderRadius: 8,
-    borderWidth: 1,
+    // borderWidth: 1,
   },
   textContainer: {
     paddingLeft: 18,
-    // flex: 1,
-    // borderWidth: 1,
+    flex: 1,
+    flexDirection: 'column',
   },
   title: {
-    flex: 1,
-    color: '#848280',
+    // flex: 1,
     fontSize: 24,
+    color: '#848280',
+    // fontSize: 22,
     // lineHeight: 32,
   },
   subtitle: {
