@@ -4,28 +4,41 @@ import {
   ScrollView,
   Dimensions,
   StyleSheet,
-  Image,
   NativeSyntheticEvent,
   NativeScrollEvent,
   ImageSourcePropType,
 } from 'react-native';
-import {BlurView} from '@react-native-community/blur';
+import {CarouselItem} from './CarouselItem';
 
 const {width: screenWidth} = Dimensions.get('window');
 const PEEK_WIDTH = 40;
-const BLUR_AMOUNT = 4;
 
-interface CarouselItem {
+export interface CarouselItemI {
   id: number;
   image: ImageSourcePropType;
   title?: string;
   subtitle?: string;
 }
 
-const carouselData: CarouselItem[] = [
-  {id: 1, image: require('../assets/images/first.png')},
-  {id: 2, image: require('../assets/images/first.png')},
-  {id: 3, image: require('../assets/images/first.png')},
+const carouselData: CarouselItemI[] = [
+  {
+    id: 1,
+    image: require('../assets/images/first.png'),
+    title: 'Harvest',
+    subtitle: 'Bold design meets timeless beauty',
+  },
+  {
+    id: 2,
+    image: require('../assets/images/first.png'),
+    title: 'Stoneworks',
+    subtitle: 'Bold design meets timeless beauty',
+  },
+  {
+    id: 3,
+    image: require('../assets/images/first.png'),
+    title: 'Alabaster',
+    subtitle: 'Bold design meets timeless beauty',
+  },
 ];
 
 export const Carousel = () => {
@@ -54,12 +67,6 @@ export const Carousel = () => {
       : screenWidth - PEEK_WIDTH;
   };
 
-  const isItemActive = (index: number) => {
-    const itemStart = index * (screenWidth - PEEK_WIDTH);
-    const itemEnd = itemStart + (screenWidth - PEEK_WIDTH);
-    return scrollPosition >= itemStart - 10 && scrollPosition < itemEnd - 10;
-  };
-
   return (
     <View style={styles.container}>
       <ScrollView
@@ -73,26 +80,14 @@ export const Carousel = () => {
         scrollEventThrottle={16}
         contentContainerStyle={styles.scrollContent}>
         {carouselData.map((item, index) => {
-          const active = isItemActive(index);
-
           return (
-            <View
-              key={item.id}
-              style={[styles.slide, {width: getItemWidth(index)}]}>
-              {index !== currentIndex ? (
-                <View style={styles.blurView}>
-                  <BlurView
-                    style={styles.blurImage}
-                    blurType="light"
-                    blurAmount={BLUR_AMOUNT}
-                    reducedTransparencyFallbackColor="white">
-                    <Image source={item.image} style={styles.blurImage} />
-                  </BlurView>
-                </View>
-              ) : (
-                <Image source={item.image} style={styles.image} />
-              )}
-            </View>
+            <CarouselItem
+              item={item}
+              currentIndex={currentIndex}
+              getItemWidth={getItemWidth}
+              index={index}
+              key={index}
+            />
           );
         })}
       </ScrollView>
@@ -107,44 +102,5 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     // paddingRight: PEEK_WIDTH,
-  },
-  slide: {
-    width: screenWidth,
-    height: 530,
-    justifyContent: 'center',
-    alignItems: 'center',
-    // backgroundColor: 'red',
-  },
-  peekContainer: {
-    position: 'absolute',
-    right: -PEEK_WIDTH,
-    width: PEEK_WIDTH,
-    height: '100%',
-    overflow: 'hidden',
-    justifyContent: 'center',
-  },
-  peekImage: {
-    width: PEEK_WIDTH * 2, // Wider than container to create parallax effect
-    height: '80%',
-    borderRadius: 8,
-    opacity: 0.8,
-  },
-  image: {
-    width: '100%',
-    height: '100%',
-    // borderRadius: 8,
-  },
-  blurView: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
-    overflow: 'hidden',
-    marginLeft: 3,
-  },
-  blurImage: {
-    width: '100%',
-    height: '100%',
   },
 });
