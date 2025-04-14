@@ -11,7 +11,7 @@ import {
 import {CarouselItem} from './CarouselItem';
 
 const {width: screenWidth} = Dimensions.get('window');
-const PEEK_WIDTH = 40;
+const PEEK_WIDTH = 30;
 
 export interface CarouselItemI {
   id: number;
@@ -23,19 +23,19 @@ export interface CarouselItemI {
 const carouselData: CarouselItemI[] = [
   {
     id: 1,
-    image: require('../assets/images/first.png'),
+    image: require('../assets/images/image1.jpeg'),
     title: 'Harvest',
     subtitle: 'Bold design meets timeless beauty',
   },
   {
     id: 2,
-    image: require('../assets/images/first.png'),
+    image: require('../assets/images/image2.png'),
     title: 'Stoneworks',
     subtitle: 'Bold design meets timeless beauty',
   },
   {
     id: 3,
-    image: require('../assets/images/first.png'),
+    image: require('../assets/images/image3.png'),
     title: 'Alabaster',
     subtitle: 'Bold design meets timeless beauty',
   },
@@ -45,13 +45,6 @@ export const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const scrollRef = useRef<ScrollView>(null);
   const [scrollPosition, setScrollPosition] = useState(0);
-
-  // const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-  //   const offset = event.nativeEvent.contentOffset.x;
-  //   setScrollPosition(offset);
-  //   const index = Math.round(offset / (screenWidth - PEEK_WIDTH));
-  //   setCurrentIndex(index);
-  // };
 
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const offsetX = event.nativeEvent.contentOffset.x;
