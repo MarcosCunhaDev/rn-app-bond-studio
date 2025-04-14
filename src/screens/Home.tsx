@@ -12,7 +12,7 @@ const Home = () => {
       <ImageBackground source={backgroundImage} style={styles.background}>
         <Header />
         <Carousel />
-        <NavBar />
+        {/* <NavBar /> */}
       </ImageBackground>
     </SafeAreaView>
   );
