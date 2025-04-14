@@ -4,6 +4,7 @@ import {
   StyleSheet,
   ImageBackground,
   View,
+  ScrollView,
 } from 'react-native';
 import React from 'react';
 import {NavBar} from '../components/NavBar';
@@ -15,20 +16,31 @@ const backgroundImage = require('../assets/images/background.png');
 
 const Home = () => {
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
-      <View
-        style={{
-          position: 'absolute',
-          right: 24,
-          top: 48,
-          zIndex: 10,
-        }}>
-        <MenuIcon />
-      </View>
+    <SafeAreaView style={{flex: 1}}>
       <ImageBackground source={backgroundImage} style={styles.background}>
-        <Header />
-        <Carousel />
-        {/* <NavBar /> */}
+        <ScrollView style={{flex: 1}}>
+          <View
+            style={{
+              marginTop: 40,
+              justifyContent: 'flex-end',
+              flexDirection: 'row',
+              paddingRight: 24,
+            }}>
+            <MenuIcon />
+          </View>
+          <Header />
+          <Carousel />
+
+          <Text
+            style={{
+              fontSize: 16,
+              color: '#bcbbb9',
+              marginTop: 67,
+              textAlign: 'center',
+            }}>
+            Featuring the Industries Top Brands
+          </Text>
+        </ScrollView>
       </ImageBackground>
     </SafeAreaView>
   );

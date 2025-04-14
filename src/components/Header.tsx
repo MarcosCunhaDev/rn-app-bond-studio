@@ -23,7 +23,7 @@ export const Header = () => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 62,
+    marginTop: 40,
     marginBottom: 36,
     flexDirection: 'row',
     paddingHorizontal: 24,

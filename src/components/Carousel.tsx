@@ -90,10 +90,7 @@ export const Carousel = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    // borderWidth: 1,
+    borderWidth: 1,
   },
-  scrollContent: {
-    // paddingRight: PEEK_WIDTH,
-  },
+  scrollContent: {},
 });
