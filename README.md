@@ -35,7 +35,7 @@ cd rn-app-bond-studio
 yarn install
 ```
 
-3. **Link assets (if you use custom fonts or images):**
+3. **Link assets:**
 ```bash
 npx react-native-asset
 ```
