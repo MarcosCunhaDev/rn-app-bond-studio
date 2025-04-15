@@ -69,7 +69,7 @@ https://github.com/user-attachments/assets/a70339a1-f25b-4ce5-b6e6-ea20063e0046
 
 6. **APK Link:**  
 You can download and install the APK from the link below:  
-[📦 Download APK](https://your-apk-link.com)
+[📦 Download APK](https://drive.google.com/file/d/1-h50sk6AihhFvRa_zP1P4qABKDySBabi/view?usp=sharing)
 
 
 
