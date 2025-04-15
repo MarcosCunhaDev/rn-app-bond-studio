@@ -57,6 +57,17 @@ yarn ios
 
 ```
 
+## 📲 Demo
+
+5. **Demo Video:**  
+Watch a short demo of the app in action:  
+[🎥 View Demo](https://your-demo-video-link.com)
+
+6. **APK Link:**  
+You can download and install the APK from the link below:  
+[📦 Download APK](https://your-apk-link.com)
+
+
 
 
 
