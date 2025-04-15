@@ -41,6 +41,7 @@ npx react-native-asset
 ```
 
 4. **Running the App:**
+
 4.1 **Start the Metro Bundler:**
 ```bash
 yarn start
