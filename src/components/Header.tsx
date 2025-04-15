@@ -36,7 +36,6 @@ const styles = StyleSheet.create({
     width: 48,
     height: 48,
     borderRadius: 8,
-    // borderWidth: 1,
   },
   textContainer: {
     paddingLeft: 18,
@@ -44,11 +43,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   title: {
-    // flex: 1,
     fontSize: 24,
     color: '#848280',
-    // fontSize: 22,
-    // lineHeight: 32,
   },
   subtitle: {
     fontSize: 24,

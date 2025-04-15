@@ -89,8 +89,6 @@ export const Carousel = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    borderWidth: 1,
-  },
+  container: {},
   scrollContent: {},
 });

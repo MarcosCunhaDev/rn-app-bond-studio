@@ -1,17 +1,10 @@
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  Dimensions,
-} from 'react-native';
 import React, {useState} from 'react';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {HomeIcon} from '../assets/icons/home';
 import {MagicIcon} from '../assets/icons/magic';
 
-const {width} = Dimensions.get('window');
 export const NavBar = () => {
-  const [activeRoute, setActiveRoute] = useState('Home'); // Initialize with 'Home'
+  const [activeRoute, setActiveRoute] = useState('Home');
 
   return (
     <View style={styles.floatingNavbar}>
@@ -32,7 +25,7 @@ export const NavBar = () => {
 const styles = StyleSheet.create({
   floatingNavbar: {
     flexDirection: 'row',
-    backgroundColor: '#1D1C19', // Darker background
+    backgroundColor: '#1D1C19',
     paddingVertical: 10,
     justifyContent: 'space-around',
     alignItems: 'center',
@@ -50,18 +43,18 @@ const styles = StyleSheet.create({
   navItem: {
     paddingHorizontal: 20,
     paddingVertical: 10,
-    borderRadius: 20, // Make nav items rounded
-    backgroundColor: 'transparent', // Default background
+    borderRadius: 20,
+    backgroundColor: 'transparent',
   },
   navText: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#f1f5f9', // Light text
+    color: '#f1f5f9',
   },
   activeNavItem: {
-    backgroundColor: '#31312B', // Darker background for active item
+    backgroundColor: '#31312B',
   },
   activeNavText: {
-    color: '#ffffff', // White text for active item
+    color: '#ffffff',
   },
 });

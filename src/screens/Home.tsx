@@ -1,48 +1,46 @@
-import {
-  Text,
-  SafeAreaView,
-  StyleSheet,
-  ImageBackground,
-  View,
-  ScrollView,
-} from 'react-native';
 import React from 'react';
-import {NavBar} from '../components/NavBar';
-import {Header} from '../components/Header';
-import {Carousel} from '../components/Carousel';
+import {
+  ImageBackground,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {MenuIcon} from '../assets/icons/menu';
+import {Carousel} from '../components/Carousel';
+import {Header} from '../components/Header';
 
 const backgroundImage = require('../assets/images/background.png');
 
 const Home = () => {
+  const insets = useSafeAreaInsets();
+  const statusBarHeight = insets.top;
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <ImageBackground source={backgroundImage} style={styles.background}>
-        <ScrollView style={{flex: 1}}>
-          <View
-            style={{
-              marginTop: 40,
-              justifyContent: 'flex-end',
-              flexDirection: 'row',
-              paddingRight: 24,
-            }}>
-            <MenuIcon />
-          </View>
-          <Header />
-          <Carousel />
-
-          <Text
-            style={{
-              fontSize: 16,
-              color: '#bcbbb9',
-              marginTop: 67,
-              textAlign: 'center',
-            }}>
-            Featuring the Industries Top Brands
-          </Text>
-        </ScrollView>
-      </ImageBackground>
-    </SafeAreaView>
+    <ImageBackground source={backgroundImage} style={styles.background}>
+      <ScrollView style={{flex: 1}}>
+        <View
+          style={{
+            marginTop: statusBarHeight + 8,
+            justifyContent: 'flex-end',
+            flexDirection: 'row',
+            paddingRight: 24,
+          }}>
+          <MenuIcon />
+        </View>
+        <Header />
+        <Carousel />
+        <Text
+          style={{
+            fontSize: 16,
+            color: '#bcbbb9',
+            marginTop: 67,
+            textAlign: 'center',
+          }}>
+          Featuring the Industries Top Brands
+        </Text>
+      </ScrollView>
+    </ImageBackground>
   );
 };
 

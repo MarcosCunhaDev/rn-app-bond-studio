@@ -2,6 +2,7 @@ import React from 'react';
 import {StatusBar, StyleSheet, useColorScheme, View} from 'react-native';
 import Home from './src/screens/Home';
 import {NavBar} from './src/components/NavBar';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -13,8 +14,10 @@ function App(): React.JSX.Element {
         backgroundColor="transparent"
         barStyle="dark-content"
       />
-      <Home />
-      <NavBar />
+      <SafeAreaProvider>
+        <Home />
+        <NavBar />
+      </SafeAreaProvider>
     </View>
   );
 }
