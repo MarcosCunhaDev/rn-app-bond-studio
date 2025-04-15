@@ -5,33 +5,37 @@ import {
   Dimensions,
   Image,
   StyleSheet,
-  Animated,
+  ImageSourcePropType,
 } from 'react-native';
+
+type CarouselItem = {
+  id: string;
+  uri: ImageSourcePropType;
+};
 
 const {width} = Dimensions.get('window');
 
-const images = [
+const images: CarouselItem[] = [
   {id: '1', uri: require('../assets/images/logos/HVL-logo.png')},
   {id: '2', uri: require('../assets/images/logos/JMV-logo.png')},
   {id: '3', uri: require('../assets/images/logos/Kohler-logo.png')},
   {id: '4', uri: require('../assets/images/logos/Toto-logo.png')},
 ];
 
-const SPACING = 10;
+const SPACING = 2;
 const ITEM_WIDTH = width * 0.8 + SPACING;
-const SPEED = 0.5; // pixels per frame (60fps = ~30px/s)
+const SPEED = 0.8;
 
-export const SmoothCarousel = () => {
-  const scrollX = useRef(new Animated.Value(0)).current;
-  const scrollRef = useRef<FlatList>(null);
+export const CarouselBrands = () => {
+  const scrollRef = useRef<FlatList<CarouselItem>>(null);
   const offset = useRef(0);
-  const infiniteList = [...images, ...images, ...images]; // Extend for illusion
+  const animationFrameId = useRef<number>(0);
+  const infiniteList = [...images, ...images, ...images];
 
   useEffect(() => {
-    let animationFrameId: number;
-
     const animate = () => {
       offset.current += SPEED;
+
       if (scrollRef.current) {
         scrollRef.current.scrollToOffset({
           offset: offset.current,
@@ -39,35 +43,37 @@ export const SmoothCarousel = () => {
         });
       }
 
-      // Reset offset to loop infinitely
       if (offset.current >= ITEM_WIDTH * images.length * 2) {
         offset.current = ITEM_WIDTH * images.length;
-        if (scrollRef.current) {
-          scrollRef.current.scrollToOffset({
-            offset: offset.current,
-            animated: false,
-          });
-        }
+        scrollRef.current?.scrollToOffset({
+          offset: offset.current,
+          animated: false,
+        });
       }
 
-      animationFrameId = requestAnimationFrame(animate);
+      animationFrameId.current = requestAnimationFrame(animate);
     };
 
-    animationFrameId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationFrameId);
+    animationFrameId.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationFrameId.current) {
+        cancelAnimationFrame(animationFrameId.current);
+      }
+    };
   }, []);
 
   return (
     <FlatList
       ref={scrollRef}
       data={infiniteList}
-      keyExtractor={(_, index) => index.toString()}
+      keyExtractor={(_, index) => `carousel-item-${index}`}
       horizontal
       showsHorizontalScrollIndicator={false}
       scrollEnabled={false}
-      snapToInterval={null}
-      bounces={false}
-      contentContainerStyle={{paddingHorizontal: SPACING / 2}}
+      decelerationRate="fast"
+      snapToInterval={ITEM_WIDTH}
+      contentContainerStyle={styles.contentContainer}
       renderItem={({item}) => (
         <View style={styles.imageContainer}>
           <Image source={item.uri} style={styles.image} />
@@ -78,14 +84,15 @@ export const SmoothCarousel = () => {
 };
 
 const styles = StyleSheet.create({
+  contentContainer: {
+    paddingHorizontal: SPACING / 2,
+    marginTop: 20,
+  },
   imageContainer: {
     width: width * 0.4,
     marginHorizontal: SPACING / 4,
     borderRadius: 12,
     overflow: 'hidden',
   },
-  image: {
-    // width: '100%',
-    // height: 200,
-  },
+  image: {},
 });

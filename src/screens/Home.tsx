@@ -10,6 +10,9 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {MenuIcon} from '../assets/icons/menu';
 import {Carousel} from '../components/Carousel';
 import {Header} from '../components/Header';
+import {CarouselBrands} from '../components/CarouselBrands';
+
+
 
 const backgroundImage = require('../assets/images/background.png');
 
@@ -39,6 +42,7 @@ const Home = () => {
           }}>
           Featuring the Industries Top Brands
         </Text>
+        <CarouselBrands />
       </ScrollView>
     </ImageBackground>
   );
