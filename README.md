@@ -27,7 +27,7 @@ Follow the instructions below to set up and run the project on your local machin
 
 ```bash
 git clone git@github.com:MarcosCunhaDev/rn-app-bond-studio.git
-cd your-repo-name 
+cd rn-app-bond-studio 
 ```
 
 2. **Install dependencies:**
